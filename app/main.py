@@ -12,7 +12,7 @@ CORS(app, support_credentials=True)
 
 @app.route('/<classN>', methods=['GET'])
 def schedule(classN):
-    response = get_schedule(classN)
+    response = jsonify(get_schedule(classN))
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
