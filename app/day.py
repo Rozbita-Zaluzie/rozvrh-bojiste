@@ -1,20 +1,14 @@
-from re import template
-
-
-
-
-
 def day_parse(className, day):
-    dayTopBool = False
 
     # remove headers and 0. class
     if day[0].get('class') == ['KuvHeaderNadpis']:
-        dayTopBool = True
         day.pop(0)
         day.pop(0)
         day.pop(0)
     day.pop(0)
 
+
+    # delete copies in table 
     classes = []
     for d in range(len(day)):
         clsThis = day[d].get('class')
@@ -29,7 +23,7 @@ def day_parse(className, day):
             classes.append(day[d])
 
 
-    # ODV 
+    # ODV exception
     if classes[0].text.startswith("Odv"):
         odv = classes[0]
         odvNone = classes[1]
@@ -42,12 +36,12 @@ def day_parse(className, day):
                 classes.append(odvNone)
 
 
-
     # parse to json
     parsed = []
     index = 0
     for d in classes:
         if d.text != None and d.text != "":
+            # class
             spl = d.text.split(".")
             spl2 = spl[0].split(className)
            
@@ -61,6 +55,7 @@ def day_parse(className, day):
             parsed.append(template)
         
         else:
+            # pauza
             template = {
                 "pauza": True,
                 "hodina": index,
@@ -69,19 +64,12 @@ def day_parse(className, day):
 
         index += 1
 
-    print(dayTopBool)
-    for x in parsed:
-        print(x)
-    print("-----------------")
-
+    return parsed
 
 
 
 def days_to_json(className, dayTop, dayBottom=None):
-
-   
-
-
+    # parse days top and bottom if exists
     dt = day_parse(className, dayTop)
     
     if dayBottom != None:
@@ -90,11 +78,15 @@ def days_to_json(className, dayTop, dayBottom=None):
         db = None
 
 
+    # combine top and bottom of day
     day = {
         "top": dt,
         "bottom": db
     }
+
     return day
+
+    
 
     
    

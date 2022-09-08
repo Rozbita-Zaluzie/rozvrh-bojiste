@@ -1,0 +1,6 @@
+gunicorn
+flask
+flask-cors
+requests
+sb4
+selenium
