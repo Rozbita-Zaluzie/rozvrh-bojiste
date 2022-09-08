@@ -2,5 +2,5 @@ gunicorn
 flask
 flask-cors
 requests
-sb4
+bs4
 selenium
