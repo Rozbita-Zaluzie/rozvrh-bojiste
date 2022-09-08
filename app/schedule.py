@@ -16,7 +16,7 @@ def get_schedule(className):
     chrome_options.add_argument('--no-sandbox')
     chrome_options.binary_location = GOOGLE_CHROME_PATH
 
-    browser = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+    browser = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
     url = ('https://aplikace.skolaonline.cz/SOL/PublicWeb/SOSaG/KWE009_RozvrhTridy.aspx')
     browser.get(url)
 
