@@ -8,7 +8,7 @@ from app.day import days_to_json
 def get_schedule(className):
 
     # driver setup
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(executable_path='../app/chromedriver.exe')
     url = ('https://aplikace.skolaonline.cz/SOL/PublicWeb/SOSaG/KWE009_RozvrhTridy.aspx')
     browser.get(url)
 
