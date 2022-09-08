@@ -5,14 +5,13 @@ from app.schedule import get_schedule
 
 
 
-
 app = Flask(__name__, template_folder='templates')
 CORS(app, support_credentials=True)
 
 
 
-@app.route('/schedule/<classN>', methods=['GET'])
-def category_url(var):
-    return jsonify(get_schedule(var))
+@app.route('/<classN>', methods=['GET'])
+def get_schedule(classN):
+    return jsonify(get_schedule(classN))
 
 
