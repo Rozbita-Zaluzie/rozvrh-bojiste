@@ -14,6 +14,6 @@ CORS(app, support_credentials=True)
 def schedule(classN):
     response = jsonify(get_schedule(classN))
     response.headers.add('Access-Control-Allow-Origin', '*')
-    return Response(response, mimetype='plain/text')
+    return response
 
 
